@@ -29,16 +29,16 @@ MonoBehaviour:
     m_Settings:
       excludeSkybox: 1
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       method: 0
       fxaaSettings:
-        preset: 2
+        preset: 4
       taaSettings:
-        jitterSpread: 0.75
+        jitterSpread: 0.5
         sharpen: 0.3
-        stationaryBlending: 0.95
-        motionBlending: 0.85
+        stationaryBlending: 0.99
+        motionBlending: 0.71
   ambientOcclusion:
     m_Enabled: 0
     m_Settings:
@@ -77,11 +77,11 @@ MonoBehaviour:
       useCameraFov: 0
       kernelSize: 0
   motionBlur:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       shutterAngle: 270
       sampleCount: 20
-      frameBlending: 0.313
+      frameBlending: 0.27
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -102,8 +102,8 @@ MonoBehaviour:
       bloom:
         intensity: 0.36
         threshold: 1.09
-        softKnee: 0.702
-        radius: 4
+        softKnee: 0.304
+        radius: 4.35
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}

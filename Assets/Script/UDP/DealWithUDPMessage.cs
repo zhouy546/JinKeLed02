@@ -19,7 +19,7 @@ using System.Linq;
 
 public class DealWithUDPMessage : MonoBehaviour {
     public static DealWithUDPMessage instance;
-
+    public LogoWellCtr logoWellCtr;
     // public GameObject wellMesh;
     private string dataTest;
     // public static char[] sliceStr;
@@ -66,6 +66,30 @@ public class DealWithUDPMessage : MonoBehaviour {
 
                 SoundMangager.instance.StopBGM();
             }
+            else if (dataTest == "10030") {//LOGO WELL
+                SoundMangager.instance.Select();
+                logoWellCtr.SetTargetPostition();
+                logoWellCtr.TurnOnLogoWell();
+                VideoCtr.instance.StopFullScreenVideoPlayer();
+                CanvasMangager.instance.TurnOffAllTitle();
+                CanvasMangager.instance.HideAlltitleText();
+                MainCtr.instance.TurnOffAll();
+                //StartCoroutine(CanvasMangager.instance.Fade());
+
+                SoundMangager.instance.StopBGM();
+                SoundMangager.instance.PlayBGM("BGM");
+
+            } else if (dataTest =="10040") {//大地图
+                SoundMangager.instance.Select();
+                VideoCtr.instance.StopFullScreenVideoPlayer();
+                CanvasMangager.instance.TurnOffAllTitle();
+                CanvasMangager.instance.HideAlltitleText();
+                MainCtr.instance.TurnOffAll();
+
+                OverRideCameraMove.instance.MoveTo(new Vector3(0f, Camera.main.transform.position.y, 750f), 2f);
+                OverRideCameraMove.instance.RotateTo(Vector3.zero, 2f);
+               // Debug.Log()
+            }
 
 
 
@@ -77,39 +101,42 @@ public class DealWithUDPMessage : MonoBehaviour {
                 if (dataTest == "10001")
                 {
                     //CameraMover.instance.CurrentID = 0;
-                    OverRideCameraMove.instance.Go(0, ValueSheet.ID_Node_keyValuePairs,0);
+                    OverRideCameraMove.instance.Go(0, ValueSheet.ID_Node_keyValuePairs);
                 }
                 else if (dataTest == "10002")
                 {
                     //CameraMover.instance.CurrentID = 1;
-                    OverRideCameraMove.instance.Go(1, ValueSheet.ID_Node_keyValuePairs, 1);
+                    OverRideCameraMove.instance.Go(1, ValueSheet.ID_Node_keyValuePairs);
                 }
                 else if (dataTest == "10003")
                 {
                     // CameraMover.instance.CurrentID = 2;
-                    OverRideCameraMove.instance.Go(2, ValueSheet.ID_Node_keyValuePairs, 1);
+                    OverRideCameraMove.instance.Go(2, ValueSheet.ID_Node_keyValuePairs);
                 }
                 else if (dataTest == "10004")
                 {
                     // CameraMover.instance.CurrentID = 3;
-                    OverRideCameraMove.instance.Go(3, ValueSheet.ID_Node_keyValuePairs, 1);
+                    OverRideCameraMove.instance.Go(3, ValueSheet.ID_Node_keyValuePairs);
                 }
                 else if (dataTest == "10005")
                 {
                     // CameraMover.instance.CurrentID = 4;
-                    OverRideCameraMove.instance.Go(4, ValueSheet.ID_Node_keyValuePairs, 2);
+                    OverRideCameraMove.instance.Go(4, ValueSheet.ID_Node_keyValuePairs);
                 }
                 else if (dataTest == "10006")
                 {
                     //  CameraMover.instance.CurrentID = 5;
-                    OverRideCameraMove.instance.Go(5, ValueSheet.ID_Node_keyValuePairs, 2);
+                    OverRideCameraMove.instance.Go(5, ValueSheet.ID_Node_keyValuePairs);
                 }
                 else if (dataTest == "10007")
                 {
                     // CameraMover.instance.CurrentID = 6;
-                    OverRideCameraMove.instance.Go(6, ValueSheet.ID_Node_keyValuePairs, 2);
+                    OverRideCameraMove.instance.Go(6, ValueSheet.ID_Node_keyValuePairs);
                 }
             }
+
+
+
 
 
         }

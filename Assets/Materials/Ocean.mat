@@ -8,14 +8,14 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Ocean
   m_Shader: {fileID: 4800000, guid: f41b97872ce3bba439516a22765e895b, type: 3}
-  m_ShaderKeywords: WFS_TWOSIDED _AA_ON _EMISSION _GLOW_ON _MODE_DEFAULT _WLIGHT_SURFACE
+  m_ShaderKeywords: _AA_ON _ALPHABLEND_ON _EMISSION _GLOW_ON _MODE_DEFAULT _WLIGHT_SURFACE
     _WSTYLE_SMOOTH _WUV_UV0
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: TransparentCutout
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -70,29 +70,29 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.541
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
-    - _FDist: 0.1
-    - _FMode: 1
-    - _FPow: 5
+    - _DstBlend: 10
+    - _FDist: 0.2
+    - _FMode: 0
+    - _FPow: 0
     - _Fade: 0
     - _Fold: 31
-    - _GDist: 0.3
+    - _GDist: 0.5
     - _GEmission: 2
-    - _GPower: 2
+    - _GPower: 1
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Glow: 1
     - _Limits: 1
     - _Metallic: 0
-    - _Mode: 1
+    - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Quad: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _TwoSided: 1
+    - _SrcBlend: 5
+    - _TwoSided: 0
     - _UVSec: 0
     - _WEmission: 0.57
     - _WGloss: 0
@@ -103,10 +103,10 @@ Material:
     - _WOpacity: 0.65
     - _WParam: 0
     - _WStyle: 1
-    - _WThickness: 0.033000004
+    - _WThickness: 0.016500002
     - _WTransparency: 1
     - _WUV: 0
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -27,10 +27,13 @@ public class CreateUI : MonoBehaviour {
 
         CreateDefault(ReadJson.NodeList, NodeL_Default, NodeR_Default, ValueSheet.ID_Node_keyValuePairs, NodeObject, Parents[0], ValueSheet.nodeCtrs);
 
-        CreateDefault(ReadJson.ECO_NodeList, NodeL_Default, NodeR_Default, ValueSheet.ID_ECO_Node_keyValuePairs, ECO_NodeObject, Parents[1], ValueSheet.ECO_nodeCtrs);
+        //CreateDefault(ReadJson.ECO_NodeList, NodeL_Default, NodeR_Default, ValueSheet.ID_ECO_Node_keyValuePairs, ECO_NodeObject, Parents[1], ValueSheet.ECO_nodeCtrs);
 
-        CreateDefault(ReadJson.Gongyi_NodeList, NodeL_Default, NodeR_Default, ValueSheet.ID_Gongyi_Node_keyValuePairs, Gongyi_NodeObject,Parents[2], ValueSheet.Gongyi_nodeCtrs);
+        //CreateDefault(ReadJson.Gongyi_NodeList, NodeL_Default, NodeR_Default, ValueSheet.ID_Gongyi_Node_keyValuePairs, Gongyi_NodeObject,Parents[2], ValueSheet.Gongyi_nodeCtrs);
 
+
+        CreateSubNode(SunNode_ECO, new Vector3(10, 33, 0), ECO_NodeObject, Parents[1], ValueSheet.ECO_nodeCtrs);
+        CreateSubNode(SunNode_Gongyi, new Vector3(10, 33, 0), Gongyi_NodeObject, Parents[2], ValueSheet.Gongyi_nodeCtrs);
 
         //for (int i = 0; i < ReadJson.NodeList.Count; i++)
         //{
@@ -52,13 +55,6 @@ public class CreateUI : MonoBehaviour {
         //    }
         //    ValueSheet.ID_Node_keyValuePairs.Add(ReadJson.NodeList[i].ID, NodeObject[i]);
         //}
-
-
-        //  CreateSubNode(SunNode_ECO, new Vector3 (10,33,0), ECO_NodeObject, Parents[1], ValueSheet.ECO_nodeCtrs);
-        // CreateSubNode(SunNode_Gongyi, new Vector3(10, 33, 0), Gongyi_NodeObject, Parents[2], ValueSheet.Gongyi_nodeCtrs);
-
-
-
     }
 
 
@@ -75,12 +71,12 @@ public class CreateUI : MonoBehaviour {
         {
             if (j % 2 == 0)
             {
-                Vector3 pos = new Vector3(-30, 16.3f, j * ValueSheet.NodeDistance);
+                Vector3 pos = new Vector3(-20, 16.3f, j * ValueSheet.NodeDistance);
                 CreateObject<T>(Prefabs_L, j, pos, nodeObj, parent, nodeCtr);
             }
             else
             {
-                Vector3 pos = new Vector3(30, 16.3f, j * ValueSheet.NodeDistance);
+                Vector3 pos = new Vector3(20, 16.3f, j * ValueSheet.NodeDistance);
                 CreateObject<T>(Prefabs_R, j, pos, nodeObj, parent, nodeCtr);
             }
             keyValuePairs.Add(nodes[j].ID, nodeObj[j]);

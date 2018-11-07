@@ -98,7 +98,7 @@ public class CanvasMangager : MonoBehaviour {
     }
 
     public IEnumerator Fade() {
-        BlackScreen.ShowAll(1f);
+        BlackScreen.ShowAll(0.2f);
         yield return new WaitForSeconds(1f);
         BlackScreen.HideAll(.7f);
     }

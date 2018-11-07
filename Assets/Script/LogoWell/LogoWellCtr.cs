@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class LogoWellCtr : MonoBehaviour {
     public List<MeshRenderer> meshRenderers = new List<MeshRenderer>();
+    public List<MeshRenderer> NullBlockMeshRenderers = new List<MeshRenderer>();
     List<int> intList = new List<int>();
     public int numPopOut=10;
 
+   // public Light light; 
+
     private List<float> ZmoveDis = new List<float>();
 
-    public List<Vector3> TargetPositions = new List<Vector3>();
+    //public List<Vector3> TargetPositions = new List<Vector3>();
    
     // Use this for initialization
     void Start () {
-        
+
         SetTargetPostition();
+
     }
 	
 	// Update is called once per frame
@@ -22,15 +26,28 @@ public class LogoWellCtr : MonoBehaviour {
 
 	}
 
-
+    public void SetLight() {
+        //LeanTween.value(5f, 0.1f, 5f).setDelay(2f).setOnUpdate(delegate (float val)
+        //{
+        //    light.intensity = val;
+        //});
+    }
 
     public void SetTargetPostition() {
-
+       // SetLight();
         foreach (var item in meshRenderers)
         {
             item.transform.localPosition = new Vector3(item.transform.localPosition.x, item.transform.localPosition.y + 15, item.transform.localPosition.z);
         }
-  
+
+        foreach (var item in NullBlockMeshRenderers)
+        {
+            item.transform.localPosition = new Vector3(item.transform.localPosition.x, item.transform.localPosition.y + 15, item.transform.localPosition.z);
+        }
+
+
+
+
     }
 
 
@@ -38,13 +55,16 @@ public class LogoWellCtr : MonoBehaviour {
 
     public void TurnOnLogoWell() {
         StopAllCoroutines();
-        foreach (var item in meshRenderers)
-        {
-            item.transform.localPosition = new Vector3(item.transform.localPosition.x, item.transform.localPosition.y, -62.25f);
-        }
+        //foreach (var item in meshRenderers)
+        //{
+        //    item.transform.localPosition = new Vector3(item.transform.localPosition.x, item.transform.localPosition.y, -62.25f);
+        //}
         this.gameObject.SetActive(true);
         StartCoroutine(Move(1f, .4f));
-        Camera.main.transform.position = new Vector3(0f, 33.3f, -68.1f);
+
+        OverRideCameraMove.instance.MoveTo(new Vector3(0f, 33.3f, -68.1f), 1f);
+        OverRideCameraMove.instance.RotateTo(Vector3.zero);
+
     }
 
 
@@ -67,7 +87,7 @@ public class LogoWellCtr : MonoBehaviour {
         {
             
             yield return new  WaitForSeconds(.04f);
-            float z = meshRenderers[item].gameObject.transform.localPosition.z + ZmoveDis[i];
+            float z = meshRenderers[item].gameObject.transform.localPosition.z - ZmoveDis[i];
             LeanTween.moveLocalZ(meshRenderers[item].gameObject, z, time);
             i++;
         }
@@ -78,7 +98,7 @@ public class LogoWellCtr : MonoBehaviour {
         foreach (var item in currentintList)
         {
             yield return new WaitForSeconds(.04f);
-            float z = meshRenderers[item].gameObject.transform.localPosition.z - ZmoveDis[i];
+            float z = meshRenderers[item].gameObject.transform.localPosition.z + ZmoveDis[i];
             LeanTween.moveLocalZ(meshRenderers[item].gameObject, z, time);
             i++;
         }

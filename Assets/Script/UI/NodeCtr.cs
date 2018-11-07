@@ -13,8 +13,7 @@ public class NodeCtr : NodeCtrBase {
     public Video_DescriptionCtr DescriptionUI;
 
     public Transform cameraSetTrans;
-
-    //public Animator MainAnimCtr;
+    
 
     // Use this for initialization
     void Start() {

@@ -50,18 +50,18 @@ public class OverRideCameraMove : MonoBehaviour {
 	}
 
 
-    public void Go(int ID, Dictionary<int, GameObject> ID_Node_keyValuePairs, int titleNum ) {
+    public void Go(int ID, Dictionary<int, GameObject> ID_Node_keyValuePairs ) {
        LeanTween.cancel(MoveTween.id);
        // StopAllCoroutines();
 
  
 
-        StartCoroutine( MoveToTarget(getRotue(ID, ID_Node_keyValuePairs), .5f,ID, titleNum));
+        StartCoroutine( MoveToTarget(getRotue(ID, ID_Node_keyValuePairs), .5f,ID));
 
     }
 
 
-    IEnumerator MoveToTarget(List<RotueNode> rotueNodes, float timeEachSetp,int id,int titleNum) {
+    IEnumerator MoveToTarget(List<RotueNode> rotueNodes, float timeEachSetp,int id) {
         TargetID = id;
         SoundMangager.instance.GoThrough();
         CanvasMangager.instance.HideCurretTitle();
@@ -79,7 +79,7 @@ public class OverRideCameraMove : MonoBehaviour {
                 MoveTo(rotueNodes[i].pos, timeEachSetp, () => updatePerviousID(id));
                 RotateTo(rotueNodes[i].rotationAngle, timeEachSetp);
 
-                CanvasMangager.instance.UpdateTitle(titleNum, CanvasMangager.instance.MainTitle);//show title
+                //CanvasMangager.instance.UpdateTitle(titleNum, CanvasMangager.instance.MainTitle);//show title
             }
             else {
                 HideDescription(PerviousID);
